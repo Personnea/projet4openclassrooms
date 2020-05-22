@@ -1,0 +1,17 @@
+header{
+    position: absolute;
+    top:0;
+    left:15px;
+    width: 100%;
+    background-color: darkgrey;
+}
+
+.premiere-section{
+    margin-top: 40px;
+}
+
+.header-nav{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
