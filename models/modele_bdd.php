@@ -17,6 +17,7 @@ Class ModeleBdd{
     function init() {
         self::$connection = new PDO( self::$dns, self::$user, self::$password );
         return self::$connexion;
+        
     }
 
 }
