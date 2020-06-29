@@ -5,9 +5,9 @@ Class ModeleBdd{
     private static $dns;
     private static $user;
     private static $password;
-    protected static $connection;
+    protected static $connexion;
 
-    function connection() {
+    function __construct() {
         self::$dns = "mysql:host=localhost;dbname=projet4";
         self::$user = "root";
         self::$password = "";
@@ -15,9 +15,10 @@ Class ModeleBdd{
     }
 
     function init() {
-        self::$connection = new PDO( self::$dns, self::$user, self::$password );
+        self::$connexion = new PDO( self::$dns, self::$user, self::$password );
         return self::$connexion;
-        
     }
+
+    
 
 }

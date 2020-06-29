@@ -6,9 +6,14 @@ require_once('views/vue_accueil.php');
 
 class ControllerAccueil{
 
-    function afficherAccueil() {
-        $vue = new VueAccueil;
-        $vue->vue_accueil();
+    public function __construct()
+    {
+        $this->afficherAccueil();
+    }
+
+     public function afficherAccueil() {
+        $this->vue = new VueAccueil;
+        $this->vue->vue_accueil();
     }
 }
 ?>

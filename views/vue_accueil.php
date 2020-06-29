@@ -1,29 +1,25 @@
 <?php
 
 class VueAccueil{
-    function vue_accueil(){
+    public function vue_accueil(){
       ?>
       <!DOCTYPE html>
-      <html lang="en">
+      <html lang="fr">
 
-      <head>
-          <?php include ('assets/includes/head.html') ?>
-          <title>Projet4</title>
-      </head>
+        <head>
+            <?php include('assets/includes/head.html') ?>
+            <title>Accueil</title>
+        </head>
 
-      <body>
-          
-          <?php include('assets\includes\header.html'); ?>
-          <div class="premiere-section">
-                  <p>Bonjour </p>
-          </div>
-          <footer class="row">
-            <div class="col-lg-12">
-              Pied de page
-            </div>
-          </footer>  
-          
-      </body>
+        <body>
+            
+            <?php include('assets\includes\header.php'); ?>
+            <div class="col-lg-12 premiere-section">
+                    <p>Bonjour </p>
+                    <?php echo $_SESSION['pseudo']?>
+            </div> 
+            
+        </body>
 
       </html>
       <?php 
