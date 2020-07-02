@@ -6,7 +6,7 @@ require_once('views\vue_admin.php');
 
 class ControllerAdmin{
 
-    function __construct(){
+    public function __construct(){
         $this->vue = new VueAdmin();
         $this->modele = new ModeleAdmin();
         if($_SESSION[ 'admin' ] != 1){
@@ -48,21 +48,21 @@ class ControllerAdmin{
         }
     }
 
-    function ModifierArticles($id){
-        $this->modele->ModifierArticleBdd($id, $_POST[ 'titre' ], $_POST[ 'article' ]);
+    private function ModifierArticles($id){
+        $this->modele->ModifierArticleBdd($id, htmlspecialchars($_POST[ 'titre' ]), htmlspecialchars($_POST[ 'article' ]));
         header( 'Location: index.php?module=admin' );
     }
     
-    function AjouterArticles(){
+    private function AjouterArticles(){
         if ( isset( $_POST[ 'titre' ] ) ) {
 
-            $this->modele->AjouterArticleBdd( $_SESSION[ 'pseudo' ], $_POST[ 'titre' ], $_POST[ 'article' ] );
+            $this->modele->AjouterArticleBdd( $_SESSION[ 'pseudo' ], htmlspecialchars($_POST[ 'titre' ]), htmlspecialchars($_POST[ 'article' ]) );
 
             header( 'Location: index.php?module=admin' );
         } 
     }
 
-    function SupprimerArticles($id){
+    private function SupprimerArticles($id){
         $this->modele->SupprimerArticleBdd($id);
         header( 'Location: index.php?module=admin' );
     }

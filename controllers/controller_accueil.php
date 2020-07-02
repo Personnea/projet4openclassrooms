@@ -11,7 +11,7 @@ class ControllerAccueil{
         $this->afficherAccueil();
     }
 
-     public function afficherAccueil() {
+    private function afficherAccueil() {
         $this->vue = new VueAccueil;
         $this->vue->vue_accueil();
     }

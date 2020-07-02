@@ -5,7 +5,7 @@ require_once('views\vue_connexion.php');
 
 class ControllerConnexion{
 
-    function __construct() {
+    public function __construct() {
         $this->modele = new ModeleConnexion();
         $this->vue = new VueConnexion();
         $this->vue->vue_connexion();
@@ -20,7 +20,7 @@ class ControllerConnexion{
         }
     }
 
-    function connexion(){
+    private function connexion(){
 
         $reponse = $this->modele->connexionbdd( $_POST[ 'email' ] );
         
@@ -40,7 +40,7 @@ class ControllerConnexion{
         }
     }
 
-    function init_session( $pseudo, $email, $password, $admin ) {
+    private function init_session( $pseudo, $email, $password, $admin ) {
         $_SESSION[ 'pseudo' ] = $pseudo;
         $_SESSION[ 'email' ] = $email;
         $_SESSION[ 'password'] = $password;

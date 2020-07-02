@@ -6,7 +6,7 @@ require_once('views\vue_inscription.php');
 class ControllerInscription{
 
 
-    function __construct() {
+    public function __construct() {
 
         $this->modele = new ModeleInscription();
         $this->vue = new VueInscription();
@@ -23,7 +23,7 @@ class ControllerInscription{
         }
     }
 
-    function inscription() {
+    private function inscription() {
         if ( isset( $_POST[ 'pseudo' ] ) ) {
 
             $hash = password_hash( $_POST[ 'password' ], PASSWORD_BCRYPT );
