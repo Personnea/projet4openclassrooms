@@ -7,6 +7,7 @@ $nom_module = "accueil";
 if ( isset( $_GET[ 'module' ] ) ) {
 
 	$nom_module = htmlspecialchars( $_GET[ 'module' ] );
+	
 }
 
 switch ( $nom_module ) {

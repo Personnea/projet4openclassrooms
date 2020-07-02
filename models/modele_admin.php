@@ -13,27 +13,28 @@ class ModeleAdmin extends ModeleBdd {
     }
 
     public function AjouterArticleBdd($auteur, $titre, $article){
-        self::$connexion->exec( "INSERT INTO `article` (`id`, `auteur`, `titre`, `contenue`) VALUES (NULL, '$auteur', '$titre', '$article');" );
+        $req = self::$connexion->prepare( "INSERT INTO `article` (`id`, `auteur`, `titre`, `contenue`) VALUES (NULL, ?, ?, ?);" );
+        $req->execute(array($auteur, $titre, $article));
     }
 
     public function RecupArticle(){
-        $req = self::$connexion->query('SELECT * FROM `article`');
-        // var_dump('salut');
-        // var_dump(self::$connexion->errorInfo());
-        // exit;
+        $req = self::$connexion->query('SELECT * FROM `article` ORDER BY `id` DESC');
         return $req;     
     }
 
     public function SupprimerArticleBdd($id){
-        self::$connexion->exec("DELETE FROM `article` WHERE `id` = '$id' ");
+        $req = self::$connexion->prepare("DELETE FROM `article` WHERE `id` = ? ");
+        $req->execute(array($id));
     }
 
     public function ModifierArticleBdd($id, $titre, $article){
-        self::$connexion->exec("UPDATE `article` SET `titre`='$titre',`contenue`='$article' WHERE `id` = '$id' ");
+        $req = self::$connexion->prepare("UPDATE `article` SET `titre`= ?,`contenue`= ? WHERE `id` = ? ");
+        $req->execute(array($titre, $article, $id));
     }
 
     public function RecupArticleDef($id){
-        $req = self::$connexion->query("SELECT * FROM `article` WHERE `id` = '$id'");
+        $req = self::$connexion->prepare("SELECT * FROM `article` WHERE `id` = ?");
+        $req->execute(array($id));
         return $req;
     }
 }

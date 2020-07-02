@@ -22,12 +22,14 @@ class ControllerConnexion{
 
     private function connexion(){
 
+        sleep(1);
+
         $reponse = $this->modele->connexionbdd( $_POST[ 'email' ] );
         
         if($req = $reponse->fetch()){
 
-            if(password_verify($_POST[ 'password' ], $req['mdp'])){
-                $this->init_session($req['pseudo'], $req['email'], $req['mdp'], $req['admin']);
+            if(htmlspecialchars(password_verify($_POST[ 'password' ], $req['mdp']))){
+                $this->init_session(htmlspecialchars($req['pseudo']), htmlspecialchars($req['email']), htmlspecialchars($req['mdp']), htmlspecialchars($req['admin']));
                 header( 'Location: index.php');
             }
             else{

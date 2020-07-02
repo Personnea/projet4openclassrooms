@@ -26,7 +26,7 @@ class ControllerInscription{
     private function inscription() {
         if ( isset( $_POST[ 'pseudo' ] ) ) {
 
-            $hash = password_hash( $_POST[ 'password' ], PASSWORD_BCRYPT );
+            $hash = htmlspecialchars(password_hash( $_POST[ 'password' ], PASSWORD_BCRYPT ));
 
             $this->modele->inscriptionbdd( $_POST[ 'pseudo' ], $hash, $_POST[ 'mail' ] );
 

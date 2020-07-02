@@ -19,19 +19,23 @@ class ControllerAdmin{
             $action = htmlspecialchars($_GET['action']);
             switch ($action) {
                 case 'modifier':
-                    $this->ModifierArticles($_GET['idarticle']);
+                    $this->ModifierArticles(htmlspecialchars($_GET['idarticle']));
                     break;
                 case 'ajouter':
                     $this->AjouterArticles();
                     break;
                 case 'supprimer':
-                    $this->SupprimerArticles($_GET['idarticle']);
+                    $this->SupprimerArticles(htmlspecialchars($_GET['idarticle']));
+                    break;
+                default:
+                    $req = $this->modele->RecupArticle();
+                    $this->vue->vue_admin($req);
                     break;
             }
         }
 
         if(isset($_GET['menu'])) {
-            $menu = htmlspecialchars($_GET['menu']);
+            $menu = htmlspecialchars($_GET['menu']); 
             switch ($menu) {
                 case 'modifier':
                     $req = $this->modele->RecupArticleDef($_GET['idarticle']);
@@ -39,6 +43,10 @@ class ControllerAdmin{
                     break;
                 case 'ajouter':
                     $this->vue->add_article();
+                    break;
+                default:
+                    $req = $this->modele->RecupArticle();
+                    $this->vue->vue_admin($req);
                     break;
             }
         }
@@ -49,14 +57,14 @@ class ControllerAdmin{
     }
 
     private function ModifierArticles($id){
-        $this->modele->ModifierArticleBdd($id, htmlspecialchars($_POST[ 'titre' ]), htmlspecialchars($_POST[ 'article' ]));
+        $this->modele->ModifierArticleBdd($id, htmlspecialchars($_POST[ 'titre' ]), $_POST[ 'article' ]);
         header( 'Location: index.php?module=admin' );
     }
     
     private function AjouterArticles(){
         if ( isset( $_POST[ 'titre' ] ) ) {
 
-            $this->modele->AjouterArticleBdd( $_SESSION[ 'pseudo' ], htmlspecialchars($_POST[ 'titre' ]), htmlspecialchars($_POST[ 'article' ]) );
+            $this->modele->AjouterArticleBdd( htmlspecialchars($_SESSION[ 'pseudo' ]), htmlspecialchars($_POST[ 'titre' ]), $_POST[ 'article' ] );
 
             header( 'Location: index.php?module=admin' );
         } 
