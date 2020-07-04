@@ -15,11 +15,11 @@
                         ?><ul><a href="?module=admin" class="blanc nounderline">Admin</a></ul><?php
                     }
                     ?>
-                    <ul><a href="?module=accueil" class="blanc nounderline">Accueil</ul>
+                    <ul><a href="?module=home" class="blanc nounderline">Accueil</ul>
                     <ul><a href ="?module=articles" class="blanc nounderline">Articles</ul>
                     <?php 
                     if (isset($_SESSION[ 'pseudo' ])){
-                        ?><ul><a href="?module=deconnexion" class="blanc nounderline">Déconnexion</a><?php
+                        ?><ul><a href="?module=logout" class="blanc nounderline">Déconnexion</a><?php
                     }
                     else{
                         ?><ul><a href="?module=connexion" class="blanc nounderline">Connexion</a><?php

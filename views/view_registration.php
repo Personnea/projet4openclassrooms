@@ -1,6 +1,6 @@
 <?php
-class VueInscription{
-    public function vue_inscription() {
+class ViewRegistration{
+    public function viewOnRegistration() {
         ?>
         <!DOCTYPE html>
         <html>
@@ -23,14 +23,14 @@ class VueInscription{
 
                             <hr>
 
-                            <form method="post" action="index.php?module=inscription&action=inscription">
+                            <form method="post" action="index.php?module=registration&action=registration">
                                 <div class="top-margin">
                                     <label>Pseudo <span class="text-danger">*</span></label>
                                     <input type="text" name="pseudo" class="form-control" required>
                                 </div>
                                 <div class="top-margin">
                                     <label>Adresse mail <span class="text-danger">*</span></label>
-                                    <input type="text" name="mail" class="form-control" required>
+                                    <input type="text" name="email" class="form-control" required>
                                 </div>
                                 <div class="row top-margin">
                                     <div class="col-sm-6">

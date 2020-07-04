@@ -1,38 +1,30 @@
 <?php 
 
-require_once('models\modele_bdd.php');
+require_once('models\model_database.php');
 
-class ModeleAdmin extends ModeleBdd {
+class ModelAdmin extends ModelDatabase {
 
-    public function verifadmin(){
-        $req = self::$connexion->prepare( "SELECT * FROM `projet4` WHERE `admin` = 1" );
-        $req->execute();
-        $req->closeCursor();
-
-        return $req;
-    }
-
-    public function AjouterArticleBdd($auteur, $titre, $article){
+    public function addArticleDatabase($auteur, $titre, $article){
         $req = self::$connexion->prepare( "INSERT INTO `article` (`id`, `auteur`, `titre`, `contenue`) VALUES (NULL, ?, ?, ?);" );
         $req->execute(array($auteur, $titre, $article));
     }
 
-    public function RecupArticle(){
+    public function getArticle(){
         $req = self::$connexion->query('SELECT * FROM `article` ORDER BY `id` DESC');
         return $req;     
     }
 
-    public function SupprimerArticleBdd($id){
+    public function delArticleDatabase($id){
         $req = self::$connexion->prepare("DELETE FROM `article` WHERE `id` = ? ");
         $req->execute(array($id));
     }
 
-    public function ModifierArticleBdd($id, $titre, $article){
+    public function editArticleDatabase($id, $titre, $article){
         $req = self::$connexion->prepare("UPDATE `article` SET `titre`= ?,`contenue`= ? WHERE `id` = ? ");
         $req->execute(array($titre, $article, $id));
     }
 
-    public function RecupArticleDef($id){
+    public function getArticleDefined($id){
         $req = self::$connexion->prepare("SELECT * FROM `article` WHERE `id` = ?");
         $req->execute(array($id));
         return $req;

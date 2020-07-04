@@ -1,6 +1,6 @@
 <?php
-class VueConnexion{
-    public function vue_connexion(){
+class ViewConnexion{
+    public function viewOnConnexion(){
         ?>
         <!DOCTYPE html>
         <html>
@@ -16,7 +16,7 @@ class VueConnexion{
                     <div class="row">
                         <div class="col-md-12 col-md-offset-3 col-sm-8 col-sm-offset-2">
                             <h3 class="thin text-center">Connectez vous à votre compte</h3><br>
-                            <p class="text-center text-muted">Si vous n'avez pas encore de compte, <a href="index.php?module=inscription">inscrivez-vous !</a>
+                            <p class="text-center text-muted">Si vous n'avez pas encore de compte, <a href="index.php?module=registration">inscrivez-vous !</a>
                             </p>
                             <hr>
 

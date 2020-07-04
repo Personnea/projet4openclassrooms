@@ -1,78 +1,76 @@
 <?php 
 
-require_once('models\modele_admin.php');
-require_once('views\vue_admin.php');
+require_once('models\model_admin.php');
+require_once('views\view_admin.php');
 
 
 class ControllerAdmin{
 
     public function __construct(){
-        $this->vue = new VueAdmin();
-        $this->modele = new ModeleAdmin();
-        if($_SESSION[ 'admin' ] != 1){
-            // var_dump('cc3');
-            // exit;
+        $this->view = new ViewAdmin();
+        $this->model = new ModelAdmin();
+        if ($_SESSION[ 'admin' ] != 1){
             header( 'Location: index.php');
         }
 
-        if(isset($_GET['action'])) {
+        if (isset($_GET['action'])){
             $action = htmlspecialchars($_GET['action']);
             switch ($action) {
-                case 'modifier':
-                    $this->ModifierArticles(htmlspecialchars($_GET['idarticle']));
+                case 'edit':
+                    $this->editArticle(htmlspecialchars($_GET['idarticle']));
                     break;
-                case 'ajouter':
-                    $this->AjouterArticles();
+                case 'add':
+                    $this->addArticle();
                     break;
-                case 'supprimer':
-                    $this->SupprimerArticles(htmlspecialchars($_GET['idarticle']));
+                case 'del':
+                    $this->delArticle(htmlspecialchars($_GET['idarticle']));
                     break;
                 default:
-                    $req = $this->modele->RecupArticle();
-                    $this->vue->vue_admin($req);
+                    $req = $this->model->getArticle();
+                    $this->view->viewOnAdmin($req);
                     break;
             }
         }
 
-        if(isset($_GET['menu'])) {
+        if (isset($_GET['menu'])){
             $menu = htmlspecialchars($_GET['menu']); 
-            switch ($menu) {
-                case 'modifier':
-                    $req = $this->modele->RecupArticleDef($_GET['idarticle']);
-                    $this->vue->mod_article($req);
+            switch ($menu){
+                case 'edit':
+                    $req = $this->model->getArticleDefined($_GET['idarticle']);
+                    $this->view->editArticle($req);
                     break;
-                case 'ajouter':
-                    $this->vue->add_article();
+                case 'add':
+                    $this->view->addArticle();
                     break;
                 default:
-                    $req = $this->modele->RecupArticle();
-                    $this->vue->vue_admin($req);
+                    $req = $this->model->getArticle();
+                    $this->view->viewOnAdmin($req);
                     break;
             }
         }
         else{
-            $req = $this->modele->RecupArticle();
-            $this->vue->vue_admin($req);
+            $req = $this->model->getArticle();
+            $this->view->viewOnAdmin($req);
         }
     }
 
-    private function ModifierArticles($id){
-        $this->modele->ModifierArticleBdd($id, htmlspecialchars($_POST[ 'titre' ]), $_POST[ 'article' ]);
+    private function editArticle($id){
+        $this->model->editArticleDatabase($id, htmlspecialchars($_POST[ 'titre' ]), $_POST[ 'article' ]);
         header( 'Location: index.php?module=admin' );
     }
     
-    private function AjouterArticles(){
-        if ( isset( $_POST[ 'titre' ] ) ) {
+    private function addArticle(){
+        if (isset( $_POST[ 'titre' ])){
 
-            $this->modele->AjouterArticleBdd( htmlspecialchars($_SESSION[ 'pseudo' ]), htmlspecialchars($_POST[ 'titre' ]), $_POST[ 'article' ] );
+            $this->model->addArticleDatabase(htmlspecialchars($_SESSION[ 'pseudo' ]), htmlspecialchars($_POST[ 'titre' ]), $_POST[ 'article' ]);
 
-            header( 'Location: index.php?module=admin' );
+            header('Location: index.php?module=admin');
         } 
     }
 
-    private function SupprimerArticles($id){
-        $this->modele->SupprimerArticleBdd($id);
-        header( 'Location: index.php?module=admin' );
+    private function delArticle($id){
+        $this->model->delArticleDatabase($id);
+        header('Location: index.php?module=admin');
     }
 
 

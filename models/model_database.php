@@ -1,6 +1,6 @@
 <?php
 
-Class ModeleBdd{
+Class ModelDatabase{
 
     private static $dns;
     private static $user;

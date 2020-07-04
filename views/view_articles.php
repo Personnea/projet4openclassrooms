@@ -1,7 +1,7 @@
 <?php 
 
-class VueArticles{
-    public function vue_articles($req){
+class ViewArticles{
+    public function viewOnArticles($req){
         ?>
         <!DOCTYPE html>
         <html>
@@ -15,7 +15,7 @@ class VueArticles{
                 <?php include('assets\includes\header.php'); ?>
                 <div class="container">
                     <?php
-                        if(($nb_de_ligne = $req->rowCount()) > 0){
+                        if(($line_number = $req->rowCount()) > 0){
                             while($result = $req->fetch()){
                                 ?>
 

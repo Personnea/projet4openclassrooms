@@ -1,14 +1,14 @@
 <?php
 
-require_once('models\modele_connexion.php');
-require_once('views\vue_connexion.php');
+require_once('models\model_connexion.php');
+require_once('views\view_connexion.php');
 
 class ControllerConnexion{
 
     public function __construct() {
-        $this->modele = new ModeleConnexion();
-        $this->vue = new VueConnexion();
-        $this->vue->vue_connexion();
+        $this->model = new ModelConnexion();
+        $this->view = new ViewConnexion();
+        $this->view->viewOnConnexion();
 
         if(isset($_GET['action'])) {
             $action = htmlspecialchars($_GET['action']);
@@ -24,12 +24,12 @@ class ControllerConnexion{
 
         sleep(1);
 
-        $reponse = $this->modele->connexionbdd( $_POST[ 'email' ] );
+        $reponse = $this->model->connexionDatabase( $_POST[ 'email' ] );
         
         if($req = $reponse->fetch()){
 
-            if(htmlspecialchars(password_verify($_POST[ 'password' ], $req['mdp']))){
-                $this->init_session(htmlspecialchars($req['pseudo']), htmlspecialchars($req['email']), htmlspecialchars($req['mdp']), htmlspecialchars($req['admin']));
+            if(htmlspecialchars(password_verify($_POST[ 'password' ], $req['password']))){
+                $this->initSession(htmlspecialchars($req['pseudo']), htmlspecialchars($req['email']), htmlspecialchars($req['password']), htmlspecialchars($req['admin']));
                 header( 'Location: index.php');
             }
             else{
@@ -42,7 +42,7 @@ class ControllerConnexion{
         }
     }
 
-    private function init_session( $pseudo, $email, $password, $admin ) {
+    private function initSession( $pseudo, $email, $password, $admin ) {
         $_SESSION[ 'pseudo' ] = $pseudo;
         $_SESSION[ 'email' ] = $email;
         $_SESSION[ 'password'] = $password;

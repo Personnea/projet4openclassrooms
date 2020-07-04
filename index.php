@@ -2,7 +2,7 @@
 
 session_start();
 
-$nom_module = "accueil";
+$nom_module = "home";
 
 if ( isset( $_GET[ 'module' ] ) ) {
 
@@ -12,18 +12,18 @@ if ( isset( $_GET[ 'module' ] ) ) {
 
 switch ( $nom_module ) {
 
-	case 'accueil':
-		require_once( 'controllers/controller_accueil.php' );
-		$module = new ControllerAccueil();
+	case 'home':
+		require_once( 'controllers/controller_home.php' );
+		$module = new ControllerHome();
 		break;
 	case 'articles':
 		require_once( 'controllers/controller_articles.php' );
 		$module = new ControllerArticles();
 		break;
 
-	case 'inscription':
-		require_once( 'controllers/controller_inscription.php' );
-		$module = new ControllerInscription();
+	case 'registration':
+		require_once( 'controllers/controller_registration.php' );
+		$module = new ControllerRegistration();
 		break;
 
 	case 'connexion':
@@ -42,15 +42,15 @@ switch ( $nom_module ) {
 			break;
 		}
 
-	case 'deconnexion':
+	case 'logout':
 		$_SESSION[ 'pseudo' ] = null;
-        $_SESSION[ 'mail' ] = null;
+        $_SESSION[ 'email' ] = null;
 		$_SESSION[ 'password'] = null;
 		$_SESSION[ 'admin'] = null;
 		
 	default:
-		require_once( 'controllers/controller_accueil.php' );
-		$module = new ControllerAccueil();
+		require_once( 'controllers/controller_home.php' );
+		$module = new ControllerHome();
 		break;
 }
 ?>

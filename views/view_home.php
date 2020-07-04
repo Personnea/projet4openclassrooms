@@ -1,7 +1,7 @@
 <?php
 
-class VueAccueil{
-    public function vue_accueil(){
+class ViewHome{
+    public function viewOnHome(){
       ?>
       <!DOCTYPE html>
         <html>
