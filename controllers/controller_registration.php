@@ -1,7 +1,7 @@
 <?php
 
-require_once('models\model_registration.php');
-require_once('views\view_registration.php');
+require_once('models/model_registration.php');
+require_once('views/view_registration.php');
 
 class ControllerRegistration{
 
@@ -34,3 +34,4 @@ class ControllerRegistration{
         } 
     }
 }
+?>

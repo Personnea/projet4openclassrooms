@@ -12,7 +12,7 @@ class ViewAdmin {
 
             <body>
           
-            <?php include('assets\includes\header.php'); ?>
+            <?php include('assets/includes/header.php'); ?>
                 <div class="container">
 
                     <div class="maincontent center premiere-section-admin">
@@ -78,7 +78,7 @@ class ViewAdmin {
             <body>
                 
           
-                <?php include('assets\includes\header.php'); ?>
+                <?php include('assets/includes/header.php'); ?>
 
                 <div class="container">
 
@@ -122,7 +122,7 @@ class ViewAdmin {
             <body>
                 
           
-                <?php include('assets\includes\header.php'); ?>
+                <?php include('assets/includes/header.php'); ?>
 
                 <div class="container">
 

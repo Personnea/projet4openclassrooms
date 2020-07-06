@@ -11,7 +11,7 @@ class ViewConnexion{
 
             <body>
 
-                <?php include('assets\includes\header.php')?>
+                <?php include('assets/includes/header.php')?>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -23,7 +23,7 @@ class ViewConnexion{
                             <form method="post" action="index.php?module=connexion&action=connexion">
                                 <div class="top-margin">
                                     <label>Email <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="email" required>
+                                    <input type="email" class="form-control" name="email" required>
                                 </div>
                                 <div class="top-margin">
                                     <label>Mot de passe <span class="text-danger">*</span></label>
@@ -44,3 +44,4 @@ class ViewConnexion{
     }
 
 }
+?>

@@ -1,7 +1,7 @@
 <?php 
 
-require_once('models\model_admin.php');
-require_once('views\view_admin.php');
+require_once('models/model_admin.php');
+require_once('views/view_admin.php');
 
 
 class ControllerAdmin{
@@ -62,7 +62,7 @@ class ControllerAdmin{
     private function addArticle(){
         if (isset( $_POST[ 'titre' ])){
 
-            $this->model->addArticleDatabase(htmlspecialchars($_SESSION[ 'pseudo' ]), htmlspecialchars($_POST[ 'titre' ]), $_POST[ 'article' ]);
+            $this->model->addArticleDatabase($_SESSION[ 'id'], htmlspecialchars($_SESSION[ 'pseudo' ]), htmlspecialchars($_POST[ 'titre' ]), $_POST[ 'article' ]);
 
             header('Location: index.php?module=admin');
         } 
@@ -75,3 +75,4 @@ class ControllerAdmin{
 
 
 }
+?>

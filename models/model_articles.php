@@ -1,6 +1,6 @@
 <?php 
 
-require_once('models\model_database.php');
+require_once('models/model_database.php');
 
 class ModelArticles extends ModelDatabase {
 
@@ -9,3 +9,4 @@ class ModelArticles extends ModelDatabase {
         return $req;     
     }
 }
+?>

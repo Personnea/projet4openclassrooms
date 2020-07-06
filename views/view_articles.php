@@ -12,7 +12,7 @@ class ViewArticles{
 
             <body>
                 
-                <?php include('assets\includes\header.php'); ?>
+                <?php include('assets/includes/header.php'); ?>
                 <div class="container">
                     <?php
                         if(($line_number = $req->rowCount()) > 0){
@@ -47,3 +47,4 @@ class ViewArticles{
         <?php    
     }
 }
+?>

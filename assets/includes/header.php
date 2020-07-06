@@ -11,8 +11,8 @@
                     ?><ul><a href="?module=admin" class="blanc nounderline">Admin</a></ul><?php
                 }
                 ?>
-                <ul><a href="?module=home" class="blanc nounderline">Accueil</ul>
-                <ul><a href ="?module=articles" class="blanc nounderline">Articles</ul>
+                <ul><a href="?module=home" class="blanc nounderline">Accueil</a></ul>
+                <ul><a href ="?module=articles" class="blanc nounderline">Articles</a></ul>
                 <?php 
                 if (isset($_SESSION[ 'pseudo' ])){
                     ?><ul><a href="?module=logout" class="blanc nounderline">Déconnexion</a><?php

@@ -11,3 +11,4 @@ class ControllerArticles{
         $this->view->viewOnArticles($req);
     }
 }
+?>

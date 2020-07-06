@@ -1,7 +1,7 @@
 <?php
 
-require_once('models\model_connexion.php');
-require_once('views\view_connexion.php');
+require_once('models/model_connexion.php');
+require_once('views/view_connexion.php');
 
 class ControllerConnexion{
 
@@ -29,8 +29,8 @@ class ControllerConnexion{
         if($req = $reponse->fetch()){
 
             if(htmlspecialchars(password_verify($_POST[ 'password' ], $req['password']))){
-                $this->initSession(htmlspecialchars($req['pseudo']), htmlspecialchars($req['email']), htmlspecialchars($req['password']), htmlspecialchars($req['admin']));
-                header( 'Location: index.php');
+                $this->initSession($req['id'] ,htmlspecialchars($req['pseudo']), htmlspecialchars($req['email']), htmlspecialchars($req['password']), htmlspecialchars($req['admin']));
+                header('Location: index.php?module=home');
             }
             else{
                 echo '<div class="col-md-12 col-md-offset-3 col-sm-8 col-sm-offset-2 alert alert-warning">Mauvais mot de passe !</div>';
@@ -42,10 +42,12 @@ class ControllerConnexion{
         }
     }
 
-    private function initSession( $pseudo, $email, $password, $admin ) {
+    private function initSession( $id, $pseudo, $email, $password, $admin ) {
+        $_SESSION[ 'id' ] = $id;
         $_SESSION[ 'pseudo' ] = $pseudo;
         $_SESSION[ 'email' ] = $email;
         $_SESSION[ 'password'] = $password;
         $_SESSION[ 'admin'] = $admin;
     }
 }
+?>

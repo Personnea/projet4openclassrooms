@@ -12,7 +12,7 @@ class ViewHome{
 
             <body>
                 
-                <?php include('assets\includes\header.php'); ?>
+                <?php include('assets/includes/header.php') ?>
                 <div class="container">
                   <div class="article-premiere-section">
                       <hr>

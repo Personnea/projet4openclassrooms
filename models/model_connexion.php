@@ -1,6 +1,6 @@
 <?php
 
-require('models\model_database.php');
+require('models/model_database.php');
 
 class ModelConnexion extends ModelDatabase {
 

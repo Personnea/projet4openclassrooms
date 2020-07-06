@@ -7,7 +7,7 @@ class ViewRegistration{
             <head>
                 <?php include('assets/includes/head.html') ?>
                 <title>Inscription</title>
-                <?php include('assets\includes\header.php')?>
+                <?php include('assets/includes/header.php')?>
             </head>
 
             <body>
@@ -52,4 +52,5 @@ class ViewRegistration{
 
 
 }
+?>
 

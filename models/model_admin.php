@@ -1,12 +1,12 @@
 <?php 
 
-require_once('models\model_database.php');
+require_once('models/model_database.php');
 
 class ModelAdmin extends ModelDatabase {
 
-    public function addArticleDatabase($auteur, $titre, $article){
-        $req = self::$connexion->prepare( "INSERT INTO `article` (`id`, `auteur`, `titre`, `contenue`) VALUES (NULL, ?, ?, ?);" );
-        $req->execute(array($auteur, $titre, $article));
+    public function addArticleDatabase($user_id, $auteur, $titre, $article){
+        $req = self::$connexion->prepare( "INSERT INTO `article` (`id`, `user_id`, `auteur`, `titre`, `contenue`) VALUES (NULL, ?, ?, ?, ?);" );
+        $req->execute(array($user_id, $auteur, $titre, $article));
     }
 
     public function getArticle(){
@@ -30,3 +30,4 @@ class ModelAdmin extends ModelDatabase {
         return $req;
     }
 }
+?>
