@@ -12,7 +12,7 @@ class ControllerHome{
     }
 
     private function displayHome() {
-    $this->view = new ViewHome;
+        $this->view = new ViewHome;
         $this->view->viewOnHome();
     }
 }
