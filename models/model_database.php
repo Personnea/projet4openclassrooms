@@ -8,9 +8,9 @@ Class ModelDatabase{
     protected static $connexion;
 
     function __construct() {
-        self::$dns = "mysql:host=db5000608848.hosting-data.io;dbname=dbs584963";
-        self::$user = "dbu719497";
-        self::$password = "Jesuisunepatate30*";
+        self::$dns = "mysql:host=;dbname=";
+        self::$user = "";
+        self::$password = "";
         self::$connexion = self::init();
     }
 
