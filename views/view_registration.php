@@ -45,6 +45,7 @@ class ViewRegistration{
                         </div>
                     </div>
                 </div> 
+                <?php include('assets/includes/footer.html') ?>
             </body>
         </html>
         <?php

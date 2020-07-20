@@ -24,6 +24,8 @@ class ViewArticles{
                                     <p>Titre de l'article: <?php echo $result['titre'];?></p>
                                     <hr>
                                     <p class="contenue-para">Contenue: <br> <?php echo $result['contenue'];?></p>
+                                    <br>
+                                    <a href="index.php?module=comment&menu=view&idarticle=<?php echo $result['id'];?>"><button class="btn btn-primary">Ajouter/Voir les commentaires</button></a>
                                     <hr>
                                 </div>                               
 
@@ -42,7 +44,9 @@ class ViewArticles{
                         }
                     ?>
                 </div>
+                <?php include('assets/includes/footer.html') ?>
             </body>
+            
         </html>
         <?php    
     }

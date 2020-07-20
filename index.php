@@ -31,6 +31,11 @@ switch ( $nom_module ) {
 		$module = new ControllerConnexion();
 		break;
 
+	case 'comment':
+		require_once( 'controllers/controller_comment.php' );
+		$module = new ControllerComment();
+		break;
+
 	case 'admin':
 		if(isset($_SESSION['pseudo'])){
 			require_once( 'controllers/controller_admin.php');

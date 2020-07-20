@@ -4,7 +4,7 @@ class ViewHome{
     public function viewOnHome(){
       ?>
       <!DOCTYPE html>
-        <html>
+        <html lang="fr">
             <head>
                 <?php include('assets/includes/head.html') ?>
                 <title>Accueil</title>
@@ -20,9 +20,13 @@ class ViewHome{
                       <hr>
                       <p class="contenue-para">Bienvenue sur le site de Jean Forteroche ! <br>
                         Vous pourrez retrouver sur le site tous les chapitres écris par lui-même</p>
+                      <img alt="Photo de Mr Jean Forteroche" class="text-center" src="assets/img/PhotoAvatar.PNG" >
+                      <p class="contenue-para">Moi c'est Jean Forteroche, je suis écrivain !</p>
+
                       <hr>
                   </div>
                 </div>
+                <?php include('assets/includes/footer.html') ?>
             </body>
         </html>
       <?php 

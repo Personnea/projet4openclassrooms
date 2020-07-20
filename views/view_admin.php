@@ -18,6 +18,7 @@ class ViewAdmin {
                     <div class="maincontent center premiere-section-admin">
                         <p class="alert alert-dark text-center">Bienvenue sur la page admin.</p>
                         <button class="btn btn-success" onclick="location.href='index.php?module=admin&menu=add'">Ajouter un article</button>
+                        <button class="btn btn-success" onclick="location.href='index.php?module=admin&menu=viewcomment'">Voir les commentaires</button>
                         <hr>
                         <p class="alert alert-info text-center">Liste des articles</p>
 
@@ -55,6 +56,7 @@ class ViewAdmin {
                         }
                     ?>
                 </div>
+                <?php include('assets/includes/footer.html') ?>
             </body>
         </html>
 	    <?php 
@@ -98,7 +100,8 @@ class ViewAdmin {
                             </div>             
                         </form>                      
                     </div>
-                </div>               
+                </div> 
+                <?php include('assets/includes/footer.html') ?>              
             </body>
         </html>
         <?php
@@ -150,7 +153,72 @@ class ViewAdmin {
                          }
                          ?>                    
                     </div>
-                </div>               
+                </div> 
+                <?php include('assets/includes/footer.html') ?>              
+            </body>
+        </html>
+        <?php
+    }
+
+    public function viewOnComment($req){
+        ?>
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <?php include('assets/includes/head.html') ?>
+                <title>Voir les commentaires</title>
+            </head>
+
+            <body>
+                
+          
+                <?php include('assets/includes/header.php'); ?>
+
+                <div class="container">
+
+                    <div class="row">
+                        <p class="alert alert-dark">Voir les commentaires.</p>
+                    </div>
+
+                    <div class="row">
+                    <?php
+                        if(($nb_de_ligne = $req->rowCount()) > 0){
+                            while($result = $req->fetch()){
+                                ?>
+
+                                <div class="article-premiere-section">
+                                    <hr>
+                                    <p>ID de l'article: <?php echo $result['id_article'];?></p>
+                                    <hr>
+                                    <p class="contenue-para">Contenue: <br> <?php echo $result['content'];?></p>
+                                    <?php if($result['warning'] == '1'){
+                                        ?>
+                                        <p class="contenue-para">⚠️</p>
+                                        <?php
+                                    }
+                                    ?>
+                                    <hr>
+                                    <a href="index.php?module=admin&action=delcomment&idcomment=<?php echo $result['id'];?>"><button type="button" class="btn btn-danger">Supprimer ce commentaire ?</button></a>                                  
+                                    <hr>
+                                </div>                               
+
+                                <?php
+
+                            }
+                        }
+                        else{
+                            ?>
+
+                                <div class="alert alert-warning" role="alert">
+                                    Aucun commentaires à afficher !
+                                </div>
+
+                            <?php
+                        }
+                    ?>            
+                    </div>
+                </div>
+                <?php include('assets/includes/footer.html') ?>               
             </body>
         </html>
         <?php

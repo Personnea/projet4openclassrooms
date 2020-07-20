@@ -1,6 +1,7 @@
 <?php 
 
 require_once('models/model_admin.php');
+require_once('models/model_comment.php');
 require_once('views/view_admin.php');
 
 
@@ -9,6 +10,7 @@ class ControllerAdmin{
     public function __construct(){
         $this->view = new ViewAdmin();
         $this->model = new ModelAdmin();
+        $this->model_comment = New ModelComment();
         if ($_SESSION[ 'admin' ] != 1){
             header( 'Location: index.php');
         }
@@ -24,6 +26,9 @@ class ControllerAdmin{
                     break;
                 case 'del':
                     $this->delArticle(htmlspecialchars($_GET['idarticle']));
+                    break;
+                case 'delcomment':
+                    $this->delComment($_GET['idcomment']);
                     break;
                 default:
                     $req = $this->model->getArticle();
@@ -41,6 +46,10 @@ class ControllerAdmin{
                     break;
                 case 'add':
                     $this->view->addArticle();
+                    break;
+                case 'viewcomment':
+                    $req = $this->model_comment->getAllComment();
+                    $this->view->ViewOnComment($req);
                     break;
                 default:
                     $req = $this->model->getArticle();
@@ -73,6 +82,10 @@ class ControllerAdmin{
         header('Location: index.php?module=admin');
     }
 
+    private function delComment($id){
+        $this->model_comment->delCommentDatabase($id);
+        header('Location: index.php?module=admin&menu=viewcomment');
+    }
 
 }
 ?>
